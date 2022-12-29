@@ -1,4 +1,6 @@
 body {
+    text-align: center;
+    padding: 100px;
     background: whitesmoke;
     display: table-cell;
 }
@@ -49,6 +51,18 @@ button {
     transition: 0.3s;
 }
 
+.w-btn:hover {
+    letter-spacing: 2px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.w-btn-outline:hover {
+    letter-spacing: 2px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
 .w-btn-neon2:hover {
     transform: scale(1.2);
 }
@@ -65,4 +79,30 @@ button {
     left: 50%;
     transform: translate(-50%, -50%);
     animation: ring 1.5s infinite;
+}
+
+.w-btn:active {
+    transform: scale(1.5);
+}
+
+.w-btn-outline:active {
+    transform: scale(1.5);
+}
+
+.w-btn-gra-anim {
+    background-size: 400% 400%;
+    animation: gradient1 5s ease infinite;
+}
+
+@keyframes ring {
+    0% {
+        width: 30px;
+        height: 30px;
+        opacity: 1;
+    }
+    100% {
+        width: 300px;
+        height: 300px;
+        opacity: 0;
+    }
 }
