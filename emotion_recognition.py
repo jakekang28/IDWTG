@@ -11,8 +11,13 @@ import cv2
 
 import sys, os
 
-path = './photo_dir' 
-photo_dir_list = os.listdir(path) 
+path = './photo_dir'
+path = 'C:/Users/uti1catty/Downloads'
+
+Downloads_dir_path = sys.argv[1]
+path = Downloads_dir_path
+photo_dir_list = os.listdir(path)
+print(photo_dir_list)
 
 photo_dir_list_len = len(photo_dir_list)
 
@@ -165,7 +170,7 @@ while(True):
     found = False
     if now_photo_dir_list_len > photo_dir_list_len:
         for filename in now_photo_dir_list:
-            if filename not in photo_dir_list:
+            if filename not in photo_dir_list and (filename.endswith('jpg') or filename.endswith('png')):
                 target = filename
                 found = True
                 break
@@ -173,7 +178,7 @@ while(True):
     now_photo_dir_list_len = photo_dir_list_len
     if found:
         print(target)
-        image = cv2.imread('./photo_dir/' + target)
+        image = cv2.imread(path + '/' + target)
         result, save_img = inference(image)
         
         print(result)
