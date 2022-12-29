@@ -1,14 +1,44 @@
 <!DOCTYPE html>
-    <html lang="ko">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src = "js/home/home.js" defer></script>
-        <title>Document</title>
-    </head>
-    <body>
-        <h1>당신의 감정을 마음껏 쏟아보세요</h1>
-        <button id = "write">감정 쓰기</button> 
-    </body>
-    </html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <title>insert data</title>
+</head>
+<body>
+  <hr/>
+  <form method="post" id="form">
+    <fieldset>
+      <legend>감정을 표출하세요</legend>
+      <table>
+        <tr>
+          <td><label>제목</label></td>
+          <td><input type="text" name="title" /></td>
+        </tr>
+        <tr>
+          <td><label>내용</label></td>
+          <td><input type="text" name="content" /></td>
+        </tr>
+      </table>
+      <input type="submit" value="제출">
+    </fieldset>
+  </form>
+  <script>
+    const form = document.getElementById("form")
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const formData = new FormData(form)
+      var object = {};
+      formData.forEach(function(value, key){
+      object[key] = value;
+});
+
+      axios.post('/write', object)
+      .then((res) => console.log('success', res))
+      .catch((err) => console.log(error))
+    })
+  </script>
+</body>
+</html>
