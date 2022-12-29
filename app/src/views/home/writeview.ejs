@@ -35,9 +35,9 @@
       object[key] = value;
 });
 
-      axios.post('/write', object)
+      axios.post('/view', object)
       .then((res) => console.log('success', res))
-      .catch((err) => console.log(error))
+      .catch((err) => console.log(err))
     })
   </script>
 </body>

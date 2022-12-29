@@ -1,8 +1,28 @@
 const db = require("../../config/db")
 const fs = require("fs")
-
-const hello = (req, res)=> {
-    res.render("home/writeview")
+function sleep(ms) {
+    const wakeUpTime = Date.now() + ms;
+    while (Date.now() < wakeUpTime) {}
+  }
+const hello =(req, res) => {
+    res.render("home/webcam_capture")
+    sleep(10000)
+    fs.readFile("../current_emotion.txt",'utf-8',function (err, data) {
+        if(err){
+            console.log(err)
+        }
+        else{
+            if(data == 'good'){
+                console.log(data)
+                return res.render("home/homeview")
+            }
+            else{
+                console.log(data)
+                return res.render("home/writeview")
+            }
+        }
+    })
+    
 }
 const menu = (req, res) => {
     res.redirect("/view")
@@ -22,15 +42,10 @@ const getinsert = (req, res) => {
             console.log(err)
             res.status(500).send('Internal Server Error')
         }else{
-            
-        var JsonData = document.getElementByID("myJsonData");
-        var myJsonData = JSON.parse(jsonData);
-            res.render('home/writeview',{data : jsonData})
+           res.render("home/writeview.ejs")
          }
     })
-    fs.readFile('writeview.ejs', 'utf8', function (err, data) {
-        res.send(data)
-      })
+    
 }
 const insert = (req, res, next) => {
     var title = req.body.title

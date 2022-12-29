@@ -12,7 +12,7 @@ const { create } = require("domain");
 router.get('/', ctrl.hello)
 router.get('/',ctrl.write)
 router.get('/write',ctrlwrite.hello)
-router.get('/view',ctrlview.read)
-router.get('/write', ctrlwrite.getinsert)
-router.post('/write',ctrlwrite.insert)
+router.get('/view',ctrlwrite.getinsert)
+// router.get('/write', ctrlwrite.getinsert)
+router.post('/view',ctrlwrite.insert)
 module.exports = router
