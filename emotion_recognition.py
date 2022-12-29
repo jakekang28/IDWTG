@@ -14,6 +14,9 @@ import sys, os
 path = './photo_dir'
 path = 'C:/Users/uti1catty/Downloads'
 
+good_emot = ['Neutral', 'Happy', 'Surprise']
+bad_emot = ['Angry', 'Disgust', 'Fear', 'Sad']
+
 Downloads_dir_path = sys.argv[1]
 path = Downloads_dir_path
 photo_dir_list = os.listdir(path)
@@ -163,6 +166,17 @@ def inference(image):
     #return image
     return emotions[l[i]][0], image
 
+# from flask import Blueprint, request, render_template, flash, redirect, url_for
+# from flask import current_app as current_app
+ 
+# main = Blueprint('main', __name__, url_prefix='/')
+ 
+# @main.route('/main', methods=['GET'])
+# def index(emotion):
+#     testData = emotion
+ 
+#     return render_template('/main/index.html', testDataHtml=testData)
+
 
 while(True):
     now_photo_dir_list = os.listdir(path)
@@ -183,3 +197,11 @@ while(True):
         
         print(result)
         cv2.imwrite(f'./inference/{result}_{filename}',save_img)
+        
+        emotion_file = open('current_emotion.txt', 'w')
+        if result in good_emot:
+            emotion_file.write('good')
+        elif result in bad_emot:
+            emotion_file.write('bad')
+        emotion_file.close()
+

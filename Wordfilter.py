@@ -112,15 +112,6 @@ refine_text = []
 for paragraph in text:
     refine_paragraph = []
     for line in paragraph:
-        # words = line.split()
-        # for i in range(len(words)):
-        #     word = words[i]
-        #     for fword in swear_set:
-        #         idx = word.find(fword)
-        #         if idx >= 0:
-        #             fword_len = len(fword)
-        #             new_word = '나쁜말' + word[idx + fword_len:]
-        #             words[i] = new_word
         filterline = trickCheck(line)
         # filterline2 = trickCheck(StringReplacer(line))
         
