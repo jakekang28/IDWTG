@@ -66,7 +66,7 @@ for paragraph in text:
         refine_paragraph.append(line)
     refine_text.append(refine_paragraph)
 
-new_txt = sys.argv[2]
+new_txt = 'refined_' + origin_txt
 
 new_file = open(new_txt, 'wt', encoding='UTF-8')
 
