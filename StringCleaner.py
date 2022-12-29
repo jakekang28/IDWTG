@@ -1,8 +1,7 @@
 # StringCleaner.py
 from copy import copy
 
-def StringReplacer(targstr):
-    
+def StringReplacer(targstr):    
     targstr = targstr.replace("|<", "k")
     targstr = targstr.replace("|>", "p")
     targstr = targstr.replace("()", "o")
