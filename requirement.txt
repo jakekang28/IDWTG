@@ -1,0 +1,2 @@
+conda install tensorflow==2.5
+pip install js2py
